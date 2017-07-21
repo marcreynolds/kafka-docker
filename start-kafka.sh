@@ -46,4 +46,4 @@ if [[ -n "$CUSTOM_INIT_SCRIPT" ]] ; then
 fi
 
 create-topics.sh &
-exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties -javaagent:$KAFKA_HOME/libs/jmx_prometheus_javaagent-0.9.jar=7071:$KAFKA_HOME/config/kafka-0-8-2.yml
+exec $KAFKA_HOME/bin/kafka-server-start.sh -javaagent:$KAFKA_HOME/libs/jmx_prometheus_javaagent-0.9.jar=7071:$KAFKA_HOME/config/kafka-0-8-2.yml $KAFKA_HOME/config/server.properties
