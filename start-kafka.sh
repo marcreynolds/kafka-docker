@@ -45,6 +45,6 @@ if [[ -n "$CUSTOM_INIT_SCRIPT" ]] ; then
   eval $CUSTOM_INIT_SCRIPT
 fi
 
-export KAFKA_OPTS="$KAFKA_OPTS -javaagent:$KAFKA_HOME/libs/jmx_prometheus_javaagent-0.9.jar=7071:$KAFKA_HOME/config/kafka-0-8-2.yml"
+export KAFKA_OPTS="$KAFKA_OPTS -javaagent:$KAFKA_HOME/libs/jmx_prometheus_javaagent-0.9.jar=7071:$KAFKA_HOME/config/prometheus-kafka-config.yml"
 create-topics.sh &
 exec $KAFKA_HOME/bin/kafka-server-start.sh $KAFKA_HOME/config/server.properties

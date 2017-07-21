@@ -23,7 +23,8 @@ RUN chmod a+x /usr/bin/start-kafka.sh && \
     chmod a+x /usr/bin/broker-list.sh && \
     chmod a+x /usr/bin/create-topics.sh
 
-RUN wget -q -P "$KAFKA_HOME/libs/" "https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.9/jmx_prometheus_javaagent-0.9.jar" \
-    && wget -q -P "$KAFKA_HOME/config/" "https://raw.githubusercontent.com/prometheus/jmx_exporter/master/example_configs/kafka-0-8-2.yml"
+RUN wget -q -P "$KAFKA_HOME/libs/" "https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.9/jmx_prometheus_javaagent-0.9.jar"
+COPY prometheus-kafka-config.yml ${KAFKA_HOME}/config/prometheus-kafka-config.yml
+
 # Use "exec" form so that it runs as PID 1 (useful for graceful shutdown)
 CMD ["start-kafka.sh"]
